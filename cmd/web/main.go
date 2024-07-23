@@ -7,12 +7,14 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/alxxdev/snippetbox/internal/models"
 	_ "github.com/go-sql-driver/mysql"
 )
 
 type application struct {
 	errorLog *log.Logger
 	innfoLog *log.Logger
+	snippets *models.SnippetModel
 }
 
 func main() {
@@ -35,9 +37,12 @@ func main() {
 
 	defer db.Close()
 
+	// Initialize a models.SnippetModel instance and add it to the application
+	// dependencies.
 	app := &application{
 		errorLog: errorLog,
 		innfoLog: infoLog,
+		snippets: &models.SnippetModel{DB: db},
 	}
 
 	srv := &http.Server{
