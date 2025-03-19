@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql
+    container_name: snippet
+    environment:
+      MYSQL_ROOT_PASSWORD: 123      # Set the root user password
+      MYSQL_DATABASE: snippetbox    # Create a default database
+      MYSQL_USER: web               # Create a non-root user
+      MYSQL_PASSWORD: pass          # Set the password for the non-root user
+    ports:
+      - "33060:3306"                 # Map host port 3306 to container port 3306
+    volumes:
+      - snippet_db:/var/lib/mysql   # Persist MySQL data to a volume
+    networks:
+      - snippet_network
+
+volumes:
+  snippet_db: # Define a volume for MySQL data persistence
+
+networks:
+  snippet_network:  # Define a custom network for MySQL
