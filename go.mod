@@ -11,4 +11,6 @@ require (
 	github.com/go-playground/form v3.1.4+incompatible // indirect
 	github.com/go-playground/form/v4 v4.2.1 // indirect
 	github.com/go-sql-driver/mysql v1.9.2 // indirect
+	github.com/justinas/nosurf v1.1.1 // indirect
+	golang.org/x/crypto v0.37.0 // indirect
 )
